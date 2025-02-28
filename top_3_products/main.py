@@ -1,5 +1,5 @@
 from pyspark.sql import SparkSession, Window
-from pyspark.sql.functions import sum as spark_sum, rank
+from pyspark.sql.functions import rank, sum as spark_sum
 
 
 def top_3_products(spark: SparkSession):
@@ -28,7 +28,7 @@ def top_3_products(spark: SparkSession):
     results_df = (
         results_df
             .filter(results_df.rank <= 3)
-            .orderBy(results_df.country, results_df.rank.asc())
+            .orderBy(results_df.country.asc(), results_df.rank.asc())
     )
     results_df.show()
 
@@ -36,11 +36,11 @@ def top_3_products(spark: SparkSession):
 if __name__ == "__main__":
     spark = (
         SparkSession
-        .builder
-        .appName("Top3Products")
-        .config("spark.driver.extraJavaOptions", "-Djava.security.manager=allow")
-        .config("spark.executor.extraJavaOptions", "-Djava.security.manager=allow")
-        .getOrCreate()
+            .builder
+            .appName("Top3Products")
+            .config("spark.driver.extraJavaOptions", "-Djava.security.manager=allow")
+            .config("spark.executor.extraJavaOptions", "-Djava.security.manager=allow")
+            .getOrCreate()
     )
     top_3_products(spark)
     spark.stop()
