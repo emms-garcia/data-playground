@@ -3,9 +3,9 @@ from pyspark.sql.functions import rank, sum as spark_sum
 
 
 def top_3_products(spark: SparkSession):
-    products_df = spark.read.csv("products.csv", header=True, inferSchema=True)
-    sales_df = spark.read.csv("sales.csv", header=True, inferSchema=True)
-    customers_df = spark.read.csv("customers.csv", header=True, inferSchema=True)
+    products_df = spark.read.csv("data/products.csv", header=True, inferSchema=True)
+    sales_df = spark.read.csv("data/sales.csv", header=True, inferSchema=True)
+    customers_df = spark.read.csv("data/customers.csv", header=True, inferSchema=True)
     product_quantities_df = (
         sales_df
             .filter((sales_df.sale_date >= "2024-01-01") & (sales_df.sale_date < "2025-01-01"))
