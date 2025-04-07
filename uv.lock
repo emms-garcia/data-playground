@@ -16,6 +16,29 @@ wheels = [
 ]
 
 [[package]]
+name = "data-playground"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "numpy" },
+    { name = "pandas" },
+    { name = "pyarrow" },
+    { name = "pyspark" },
+    { name = "pytest" },
+    { name = "ruff" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "numpy", specifier = "==1.26.4" },
+    { name = "pandas", specifier = ">=2.2.3" },
+    { name = "pyarrow", specifier = ">=19.0.1" },
+    { name = "pyspark", specifier = ">=3.5.5" },
+    { name = "pytest", specifier = ">=8.3.5" },
+    { name = "ruff", specifier = ">=0.11.3" },
+]
+
+[[package]]
 name = "iniconfig"
 version = "2.1.0"
 source = { registry = "https://pypi.org/simple" }
@@ -159,29 +182,6 @@ dependencies = [
     { name = "py4j" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/5f/8f/b616ef710932ccdbabd8511e08890a677482ab2967b7cf276c09a02bc64c/pyspark-3.5.5.tar.gz", hash = "sha256:6effc9ce98edf231f4d683fd14f7270629bf8458c628d6a2620ded4bb34f3cb9", size = 317214975 }
-
-[[package]]
-name = "pyspark-playground"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "numpy" },
-    { name = "pandas" },
-    { name = "pyarrow" },
-    { name = "pyspark" },
-    { name = "pytest" },
-    { name = "ruff" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "numpy", specifier = "==1.26.4" },
-    { name = "pandas", specifier = ">=2.2.3" },
-    { name = "pyarrow", specifier = ">=19.0.1" },
-    { name = "pyspark", specifier = ">=3.5.5" },
-    { name = "pytest", specifier = ">=8.3.5" },
-    { name = "ruff", specifier = ">=0.11.3" },
-]
 
 [[package]]
 name = "pytest"
